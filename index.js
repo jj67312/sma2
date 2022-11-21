@@ -125,13 +125,13 @@ app.all('*', (req, res, next) => {
 });
 
 // Error handling
-app.use((err, req, res, next) => {
-  const { statusCode = 500 } = err;
-  if (!err.message) {
-    err.message = 'Oh No, something went wrong!';
-  }
-  res.status(statusCode).render('error', { err });
-});
+// app.use((err, req, res, next) => {
+//   const { statusCode = 500 } = err;
+//   if (!err.message) {
+//     err.message = 'Oh No, something went wrong!';
+//   }
+//   res.render('error', { err });
+// });
 
 const port = process.env.PORT || 3000;
 app.listen(port, (req, res) => {
