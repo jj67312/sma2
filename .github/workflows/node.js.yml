@@ -23,6 +23,8 @@ jobs:
         run: npm ci
       - name: Run Build
         run: npm run build --if-present
+      - name: Run Test Cases
+        run: npm test  
       - name: Heroku deploy
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
