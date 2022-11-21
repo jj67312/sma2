@@ -6,12 +6,10 @@ name: Node.js CI
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+  workflow_dispatch:
 
 jobs:
-  build:
-
+  auto-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Actions Checkout
@@ -27,11 +25,9 @@ jobs:
       - run: npm run build --if-present
       - name: Run Tests
       - run: npm test
-    
       - name: Heroku deploy
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: '5f2328c8-5221-48b8-9e99-9fb673e9b548'
           heroku_app_name: 'sma3'
           heroku_email: 'jayjani002@gmail.com'
-    
