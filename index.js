@@ -34,7 +34,7 @@ const LocalStrategy = require('passport-local');
 //method-override package so that we can make use of put and delete
 const methodOverride = require('method-override');
 
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017';
+const dbUrl = process.env.DB_URL || 'mongodb+srv://jay:jay@cluster0.ft5hddt.mongodb.net/test';
 console.log(dbUrl);
 const mongoose = require('mongoose');
 main()
