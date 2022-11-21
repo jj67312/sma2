@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --timeout 100000"
+    "test": "mocha --timeout 100000",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
