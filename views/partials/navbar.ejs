@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="/stylesheets/searchbar.css">
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light px-3 py-2">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">SMA</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  
+      <!-- <div class="navbar-nav mx-auto">
+        <form autocomplete="off" method="POST" action="/allTitles" class="d-flex ">
+          <div class="autocomplete">
+            <input id="myInput" class="form-control me-2" type="text" name="campTitle" placeholder="Search Campgrounds">
+          </div>
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div> -->
+
+
+      <div class="navbar-nav ms-auto">
+        <% if(!currentUser) {%>
+        <a class="nav-link" href="/login">Login</a>
+        <a class="nav-link" href="/register">Register</a>
+        <% } else {%>
+        <a class="nav-link" href="/portfolio/<%= currentUser._id %>">Your Portfolios</a>
+        <a class="nav-link" href="/logout">Logout</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script src="/javascripts/searchbar.js"></script>

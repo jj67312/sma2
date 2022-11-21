@@ -1,0 +1,15 @@
+<%- layout('layouts/boilerplate') %>
+
+<h2>Edit <%= portfolio.name %> </h2>
+
+<form action="/portfolio/<%= currentUser._id %>/<%= portfolio._id %>?_method=PUT" method="POST" novalidate class="validated-form">
+  <div class="mb-3">
+    <label class="form-label" for="name">Enter portfolio name: </label>
+    <input class="form-control" type="text" name="portfolio[name]" id="name" value="<%= portfolio.name %>" required>
+    <div class="valid-feedback">Looks good!</div>
+  </div>
+
+  <div class="mb-3">
+    <button class="btn btn-success">Save Portfolio</button>
+  </div>
+</form>

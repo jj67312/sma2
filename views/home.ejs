@@ -1,0 +1,44 @@
+<%- layout('layouts/boilerplate') %>
+
+
+<table class="table table-borderless">
+  <thead>
+    <tr>
+      <th scope="col">Stock Name</th>
+      <th scope="col">Open</th>
+      <th scope="col">High</th>
+      <th scope="col">Low</th>
+      <th scope="col">Close</th>
+      <th scope="col">View</th>
+      <th scope="col">Choose Portfolio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let i = 0; i < stocks.length; i++) { %>
+    <tr class="p-3">
+      <th scope="row"><%= stocks[i].name %> </th>
+      <td><%= stocks[i].data[285].open %> </td>
+      <td><%= stocks[i].data[285].high %> </td>
+      <td><%= stocks[i].data[285].low %> </td>
+      <td><%= stocks[i].data[285].close %> </td>
+
+      <td> <a href="/stock/<%= stocks[i]._id %>/<%= currentUser._id %>"> View <%= stocks[i].name %> </a> </td>
+
+      <td>
+        <form class="row" action="/stock/<%= stocks[i]._id %>/<%= currentUser._id %>" method="POST">
+          <label class="col form-label" for="profession">Choose Portfolio: </label>
+          <select class="col form-select" name="portfolioName" id="profession" required>
+            <% for(let portfolio of availablePortfoliosForEachStock[i]) {%>
+            <option value="<%= portfolio.name %>"><%= portfolio.name %></option>
+            <% } %>
+          </select>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+          <button class="col btn btn-success">Add Stock</button>
+        </form>
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>

@@ -1,0 +1,28 @@
+<%- layout('layouts/boilerplate') %>
+
+<h2><%= stock.name %> Stock Data </h2>
+
+<table class="table table-borderless mt-4">
+  <thead>
+    <tr>
+      <th scope="col">Open</th>
+      <th scope="col">High</th>
+      <th scope="col">Low</th>
+      <th scope="col">Close</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let i = 285; i >= 275; i--) {%> 
+    <tr class="p-3">
+      <td><%= stock.data[i].open %> </td>
+      <td><%= stock.data[i].high %> </td>
+      <td><%= stock.data[i].low %> </td>
+      <td><%= stock.data[i].close %> </td>
+      <td><%= stock.data[i].x.getDate()%>/<%= stock.data[i].x.getMonth()%>/<%= stock.data[i].x.getFullYear()%> </td>
+    </tr>
+    <% } %> 
+  </tbody>
+</table>
+
+<a href="/" class="btn btn-info">Back to all stocks</a>

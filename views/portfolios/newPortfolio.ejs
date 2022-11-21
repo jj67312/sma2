@@ -1,0 +1,14 @@
+<div class="card-body">
+  <form action="/portfolio/<%= currentUser._id %>" method="POST" novalidate class="validated-form">
+
+    <div class="mb-3">
+      <label class="form-label" for="name">Enter portfolio name: </label>
+      <input class="form-control" type="text" name="portfolio[name]" id="name" required>
+      <div class="valid-feedback">Looks good!</div>
+    </div>
+
+    <div class="mb-3">
+      <button class="btn btn-success">Create Portfolio</button>
+    </div>
+  </form>
+</div>

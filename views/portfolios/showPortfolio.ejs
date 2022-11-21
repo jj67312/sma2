@@ -1,0 +1,25 @@
+<%- layout('layouts/boilerplate') %>
+
+<h3 class="mt-5 mb-4">Stocks in <%= portfolio.name %></h3>
+<table class="table table-borderless">
+  <tbody>
+    <% for(let stock of portfolio.stocks) { %>
+    <tr class="p-3">
+      <th scope="row"><%= stock.name %> </th>
+      <td>
+        <a class="btn btn-info" href="/stock/<%= stock._id %>/<%= currentUser._id %>"> View <%= stock.name %> </a>
+      </td>
+      <td>
+        <!-- remove stock from portfolio -->
+        <form action="/stock/remove/<%= stock._id %>/<%= portfolio._id %>/<%= currentUser._id %>?_method=DELETE" method="POST">
+          <button class="btn btn-danger">Remove <%= stock.name %></button>
+        </form>
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>
+
+
+
+<a class="btn btn-info mt-5" href="/portfolio/<%= currentUser._id %>">Back to your portfolios</a>

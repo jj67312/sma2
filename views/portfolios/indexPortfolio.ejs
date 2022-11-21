@@ -1,0 +1,36 @@
+<%- layout('layouts/boilerplate') %>
+
+<h2 class="mb-3">Create a new Portfolio</h2>
+<%- include('../portfolios/newPortfolio.ejs') %>
+
+
+<!-- 
+  portfolio name   
+  view button     goes to 
+  update button   
+  delete button 
+-->
+
+<h3 class="mt-5 mb-4">Existing portfolios:</h3>
+<table class="table table-borderless">
+  <tbody>
+    <% for(let portfolio of user.portfolios) { %>
+    <tr class="p-3">
+      <th scope="row"><%= portfolio.name %> </th>
+      <td>
+        <a class="btn btn-info" href="/portfolio/<%= currentUser._id %>/<%= portfolio._id %>"> View <%= portfolio.name %> </a>
+      </td>
+      <td>
+        <a class="btn btn-warning" href="/portfolio/<%= currentUser._id %>/<%= portfolio._id %>/edit">Edit <%= portfolio.name %> </a>
+      </td>
+      <td>
+        <!-- delete portfolio -->
+        <form action="/portfolio/<%= currentUser._id %>/<%= portfolio._id %>?_method=DELETE" method="POST">
+          <button class="btn btn-danger">Delete <%= portfolio.name %></button>
+        </form>
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>
+
