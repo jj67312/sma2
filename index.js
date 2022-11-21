@@ -34,14 +34,18 @@ const LocalStrategy = require('passport-local');
 //method-override package so that we can make use of put and delete
 const methodOverride = require('method-override');
 
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/sma';
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017';
 console.log(dbUrl);
 const mongoose = require('mongoose');
 main()
-  .then((res) => {})
-  .catch((err) => {});
+  .then((res) => {
+    console.log('Connection to DB successfull');
+  })
+  .catch((err) => {
+    console.log('Error connecting to DB');
+  });
 async function main() {
-  await mongoose.connect(dbUrl);
+  await mongoose.connect('mongodb+srv://jay:jay@cluster0.ft5hddt.mongodb.net/test');
 }
 
 // telling express that we will be using ejsMate instead of the default one
@@ -71,8 +75,8 @@ const store = MongoDBStore.create({
   crypto: {
     secret,
   },
-   // should be in seconds:
-   touchAfter: 24 * 60 * 60,
+  // should be in seconds:
+  touchAfter: 24 * 60 * 60,
 });
 store.on('error', function (e) {
   console.log('Session store error: ', e);
@@ -129,7 +133,7 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render('error', { err });
 });
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3000;
 app.listen(port, (req, res) => {
   console.log(`SMA active on port ${port}`);
 });
